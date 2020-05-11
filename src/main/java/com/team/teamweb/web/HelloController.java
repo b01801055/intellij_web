@@ -1,5 +1,7 @@
 package com.team.teamweb.web;
 
+import com.team.teamweb.domain.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1")
 public class HelloController {
+    @Autowired
+    private Book book;
+
     //    @RequestMapping(value = "/say")
     @PostMapping("/say")
     public String hello() {
@@ -43,15 +48,8 @@ public class HelloController {
         return pagemap;
     }
 
-    @GetMapping("/{id}/books/{username:[a-z_]+}")
-    public Object getOne(@PathVariable long id,@PathVariable String username) {
-        System.out.println("-------id:"+id+"username"+username);
-
-        Map<String, Object> book = new HashMap<>();
-        book.put("name", "互聯網世界觀");
-        book.put("isbn", "9845631");
-        book.put("author", "李道東");
-        book.put("username", username);
+    @GetMapping("/books/{id}")
+    public Object getOne(@PathVariable long id) {
 
         return book;
     }
