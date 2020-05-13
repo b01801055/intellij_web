@@ -14,8 +14,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1")
 public class HelloController {
-    @Autowired
-    private Book book;
 
     //    @RequestMapping(value = "/say")
     @PostMapping("/say")
@@ -51,7 +49,7 @@ public class HelloController {
     @GetMapping("/books/{id}")
     public Object getOne(@PathVariable long id) {
 
-        return book;
+        return null;
     }
 
     @PostMapping("/books")
