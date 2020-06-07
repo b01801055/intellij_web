@@ -1,17 +1,18 @@
-#book:
-#  name:互聯網
-#  author:ggg
-#  isbn:${random.uuid}
-#  description:${book.name} ,書不錯
 
 
   spring:
     datasource:
       spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:8888/book
+      url: jdbc:mysql://localhost:8888/book?useUnicode=true&characterEncoding=UTF-8&userSSL=false&serverTimezone=CST
       username: root
       password: 1234
     jpa:
       hibernate:
         ddl-auto: create
       show-sql: true
+
+  book:
+    name:互聯網
+    author:ggg
+    isbn:${random.uuid}
+    description:${book.name} ,書不錯
