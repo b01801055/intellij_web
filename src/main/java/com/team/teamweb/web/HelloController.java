@@ -12,7 +12,7 @@ import java.util.Map;
 
 //@Controller
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v")
 public class HelloController {
 
     //    @RequestMapping(value = "/say")
