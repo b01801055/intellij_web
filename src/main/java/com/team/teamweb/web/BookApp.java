@@ -57,4 +57,25 @@ public class BookApp {
     public void deleteOne(@PathVariable long id) {
         bookService.delete(id);
     }
+
+    @PostMapping("/books/by")
+//    public List<Book> findBy(@RequestParam String author, @RequestParam int status) {
+//        return bookService.findByAuthor(author);
+//        return bookService.findByAuthorAndStatus(author, status);
+//    }
+//    public List<Book> findBy(@RequestParam String description) {
+//        return bookService.findByDescriptionEndsWith(description);
+//    }
+//    public List<Book> findBy(@RequestParam int len) {
+//        return bookService.findByJPQL(len);
+//    }
+//    public int findBy(@RequestParam int status, @RequestParam long id) {
+//        return bookService.updateByJPQL(status, id);
+//    }
+//    public int findBy(@RequestParam long id) {
+//        return bookService.deleteByJPQL(id);
+//    }
+    public int findBy(@RequestParam long id,@RequestParam int status,@RequestParam long uid) {
+        return bookService.deleteAndUpdate(id, status, uid);
+    }
 }
