@@ -12,7 +12,7 @@
     <script th:src="@{/js/bootstrap.min.js}" src="../static/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="max-width: max-content">
         <h2 class="pb-2 mt-4 mb-2 border-bottom">
             書單列表
         </h2>
@@ -25,6 +25,7 @@
                 <th>作者</th>
                 <th>說明</th>
                 <th>狀態</th>
+                <th>操作</th>
             </tr>
             </thead>
             <tbody>
@@ -39,6 +40,9 @@
                     <span th:case="1">在讀</span>
                     <span th:case="2">已讀</span>
                     <span th:case="*">狀態</span>
+                </td>
+                <td>
+                    <a href="#" th:href="@{/books/{id}/input(id=${book.id})}">更新</a>
                 </td>
             </tr>
             </tbody>
