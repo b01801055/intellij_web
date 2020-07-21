@@ -3,6 +3,11 @@ package com.team.teamweb.web;
 import com.team.teamweb.domain.Book;
 import com.team.teamweb.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,9 +20,16 @@ public class BookApp {
     private BookService bookService;
 
     @GetMapping("/books")
-    public List<Book> getAll() {
-        return bookService.findAll();
+//    public Page<Book> getAll(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "5") int size) {
+//        Sort sort = Sort.by(Sort.Order.desc("id"));
+//        return bookService.findAllByPage(PageRequest.of(page, size,sort));
+//    }
+    public Page<Book> getAll(@PageableDefault(size = 5,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable) {
+        return bookService.findAllByPage(pageable);
     }
+//    public List<Book> getAll() {
+//        return bookService.findAll();
+//    }
 //    @RequestParam String name,
 //    @RequestParam String author,
 //    @RequestParam String description,

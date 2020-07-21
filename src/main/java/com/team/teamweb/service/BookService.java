@@ -3,6 +3,10 @@ package com.team.teamweb.service;
 import com.team.teamweb.domain.Book;
 import com.team.teamweb.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +20,12 @@ public class BookService {
 
     public List<Book> findAll() {
         return bookRepository.findAll();
+    }
+
+    public Page<Book> findAllByPage(Pageable pageable) {
+//        Sort sort = Sort.by(Sort.Order.desc("id"));
+//        Pageable pageable = PageRequest.of(0, 5, sort);
+        return bookRepository.findAll(pageable);
     }
 
     public Book save(Book book) {
